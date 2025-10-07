@@ -1,11 +1,18 @@
-async function getOrderBook(symbol, limit) {
-  const url = `https://api.mazdax.ir/market/order?symbol=${encodeURIComponent(symbol)}&limit=${limit}`;
+import fetch from "node-fetch";
+import { SecurityConfig } from "./config/config.js";
+
+export async function getOrderBook(symbol, limit) {
+  const base = SecurityConfig.Mazdax_config.endpoint_url_market;
+  const url = `${base}/market/order?symbol=${encodeURIComponent(
+    symbol
+  )}&limit=${limit}`;
   const response = await fetch(url, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Authorization': 'Bearer ULRdBoxPmCzrokZtpX2tOB-WBj1YT3JK-ne8kaB02Ys2zbiGuaOgnqDPXsbGEhrWPHZcKfviWTfRR4XrZKYSZAOBzp8AFXW4cKwb9-SEkCj8vhLmwrGHQIsBfTLr6pwj',
-      'Content-Type': 'application/json'
-    }
+      Authorization:
+        "Bearer DR1bKOiWI2A7J4SUdau6naAVgf22UCLLtBngs3w9V6Oj4vin8RiJLPjr68T2ZIgut9tCN0lyMYs8sinj6bm0g48zSu4JY-cBpplZhUZHalueCv82NbMEWNZn4mYfRG9C",
+      "Content-Type": "application/json",
+    },
   });
 
   if (!response.ok) {
@@ -19,46 +26,42 @@ async function getOrderBook(symbol, limit) {
 
 // Example usage:
 
-getOrderBook('ROBA1IRR', 10)
-  .then(data => {
-    console.log('Orderbook: ROBA1IRR', data);
+// getOrderBook("ROBA1IRR", 10)
+//   .then((data) => {
+//     console.log("Orderbook: ROBA1IRR", data);
+//   })
+//   .catch((err) => {
+//     console.error("Error:", err);
+//   });
+
+getOrderBook("AHRM1IRR", 10)
+  .then((data) => {
+    console.log("Orderbook: AHRM1IRR", data);
   })
-  .catch(err => {
-    console.error('Error:', err);
+  .catch((err) => {
+    console.error("Error:", err);
   });
 
+// getOrderBook("KARF1IRR", 10)
+//   .then((data) => {
+//     console.log("Orderbook: KARF1IRR", data);
+//   })
+//   .catch((err) => {
+//     console.error("Error:", err);
+//   });
 
-getOrderBook('AHRM1IRR', 10)
-  .then(data => {
-    console.log('Orderbook: AHRM1IRR', data);
-  })
-  .catch(err => {
-    console.error('Error:', err);
-  });
+// getOrderBook("GOLDBIRR", 10)
+//   .then((data) => {
+//     console.log("Orderbook: GOLDBIRR", data);
+//   })
+//   .catch((err) => {
+//     console.error("Error:", err);
+//   });
 
-  
-getOrderBook('KARF1IRR', 10)
-  .then(data => {
-    console.log('Orderbook: KARF1IRR', data);
-  })
-  .catch(err => {
-    console.error('Error:', err);
-  });
-
-
-getOrderBook('GOLDBIRR', 10)
-  .then(data => {
-    console.log('Orderbook: GOLDBIRR', data);
-  })
-  .catch(err => {
-    console.error('Error:', err);
-  });
-
-
-getOrderBook('SILVRIRR', 10)
-  .then(data => {
-    console.log('Orderbook: SILVRIRR', data);
-  })
-  .catch(err => {
-    console.error('Error:', err);
-  });
+// getOrderBook("SILVRIRR", 10)
+//   .then((data) => {
+//     console.log("Orderbook: SILVRIRR", data);
+//   })
+//   .catch((err) => {
+//     console.error("Error:", err);
+//   });

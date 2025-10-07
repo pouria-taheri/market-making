@@ -1,0 +1,31 @@
+{
+  "Mazdax_config": {
+    "endpoint_url": "https://stg.mazdax.tech",
+    "endpoint_url_order": "https://stg.mazdax.tech",
+    "endpoint_url_market": "https://stg.mazdax.tech",
+    "endpoint_url_wallet": "https://stg.mazdax.tech",
+    "request_tryNumber_default": 20,
+    "request_tryTime_default": 3,
+    "getSymbol_tryNumber": 20,
+    "getSymbol_tryTime": 3,
+    "getPortfolio_tryNumber": 20,
+    "getPortfolio_tryTime": 3,
+    "sendOrder_tryNumber": 20,
+    "sendOrder_tryTime": 3,
+    "cancelOrders_tryNumber": 20,
+    "cancelOrders_tryTime": 3,
+    "cancelOrders_retryNumber": 10,
+    "cancelOrders_retryTime": 5
+  },
+  "Sahra_config": {
+    "endpoint_url": "https://mdpapi.pikadbazar.ir",
+    "request_tryNumber_default": 20,
+    "request_tryTime_default": 3,
+    "getPriceSeries_tryNumber": 10,
+    "getPriceSeries_tryTime": 5
+  },
+  "Db_config": {
+    "getConfig_endpoint_url": "https://stg.mazdax.tech/m3-admin/config",
+    "getConfig_request_tryNumber": 3
+  }
+}

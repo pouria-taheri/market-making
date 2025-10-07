@@ -1,14 +1,19 @@
 // getSymbol.js
+import fetch from "node-fetch";
+import { SecurityConfig } from "./config/config.js";
+
 async function getSymbolByName(symbol) {
-  const url = `https://api.mazdax.ir/market/symbols/symbol/${encodeURIComponent(symbol)}`;
+  const base = SecurityConfig.Mazdax_config.endpoint_url_market;
+  const url = `${base}/market/symbols/symbol/${encodeURIComponent(symbol)}`;
 
   const response = await fetch(url, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Authorization': 'Bearer ULRdBoxPmCzrokZtpX2tOB-WBj1YT3JK-ne8kaB02Ys2zbiGuaOgnqDPXsbGEhrWPHZcKfviWTfRR4XrZKYSZAOBzp8AFXW4cKwb9-SEkCj8vhLmwrGHQIsBfTLr6pwj',
-      'Content-Type': 'application/json',
-      'Accept-Language': 'en' // or 'fa' if you want Persian translations
-    }
+      Authorization:
+        "Bearer ULRdBoxPmCzrokZtpX2tOB-WBj1YT3JK-ne8kaB02Ys2zbiGuaOgnqDPXsbGEhrWPHZcKfviWTfRR4XrZKYSZAOBzp8AFXW4cKwb9-SEkCj8vhLmwrGHQIsBfTLr6pwj",
+      "Content-Type": "application/json",
+      "Accept-Language": "en", // or 'fa' if you want Persian translations
+    },
   });
 
   if (!response.ok) {
@@ -21,12 +26,12 @@ async function getSymbolByName(symbol) {
 }
 
 // Example usage:
-getSymbolByName('AHRM1IRR')
-  .then(data => {
-    console.log('Symbol Info: AHRM1IRR', data);
+getSymbolByName("AHRM1IRR")
+  .then((data) => {
+    console.log("Symbol Info: AHRM1IRR", data);
   })
-  .catch(err => {
-    console.error('Error:', err);
+  .catch((err) => {
+    console.error("Error:", err);
   });
 
 // getSymbolByName('ROBA1IRR')
@@ -37,4 +42,4 @@ getSymbolByName('AHRM1IRR')
 //     console.error('Error:', err);
 //   });
 
-module.exports = getSymbolByName;
+export default getSymbolByName;
